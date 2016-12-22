@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:DataServices
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
+        <Schema Namespace="NerdMeetup.Models"
+            xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+            xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+            xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+            <EntityType Name="Usamapdatas">
+                <Key>
+                    <PropertyRef Name="value" />
+                </Key>
+                <Property Name="value" Type="Edm.Int32" Nullable="false" />
+                <Property Name="code" Type="Edm.String" Nullable="true" />
+            </EntityType>
+            <EntityType Name="Meetup">
+                <Key>
+                    <PropertyRef Name="MeetupID" />
+                </Key>
+                <Property Name="MeetupID" Type="Edm.Int32" Nullable="false" />
+
+                <Property Name="Quo.No" Type="Edm.String" Nullable="true" />
+                <Property Name="BPID" Type="Edm.String" Nullable="true" />
+                <Property Name="ProductPicUrl" Type="Edm.String" Nullable="true" />
+
+                <Property Name="ProductName" Type="Edm.String" Nullable="true" />
+                <Property Name="Branch" Type="Edm.String" Nullable="true" />
+                <Property Name="ApplyDate" Type="Edm.Int32" Nullable="false" />
+                <Property Name="EventDate" Type="Edm.DateTime" Nullable="false" />
+                <Property Name="riskClass" Type="Edm.String" Nullable="true" />
+                <Property Name="uwRates" Type="Edm.String" Nullable="true" />
+                <Property Name="specialRisk" Type="Edm.String" Nullable="true" />
+
+            </EntityType>
+            <ComplexType Name="LocationDetail" />
+            <EntityContainer Name="NerdMeetups" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="Meetups" EntityType="NerdMeetup.Models.Meetup" />
+                <EntitySet Name="Usamapdatas" EntityType="NerdMeetup.Models.Usamapdata"/>
+
+
+                <FunctionImport Name="FindUpcomingMeetups" EntitySet="Meetups" ReturnType="Collection(NerdMeetup.Models.Meetup)" m:HttpMethod="GET" />
+                <FunctionImport Name="FindUpcomingUsamapdatas" EntitySet="Usamapdatas" ReturnType="Collection(NerdMeetup.Models.Usamapdata)" m:HttpMethod="GET" />
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
