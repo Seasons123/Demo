@@ -1,0 +1,125 @@
+@CHARSET "UTF-8";
+/*头部标题的背景色改为黑色*/
+.overviewHeader .sapMTB,.sapTntToolHeader.sapMTB
+{
+    background-color: #000000;
+}
+.sapTntToolHeader.sapMTB .sapMBtnContent{
+    color: #ffffff;
+}
+/*去掉背景渐变*//* 暂时先不去掉了*/
+/*#__shell0{
+    background-image: linear-gradient(to bottom,#f2f2f2 0,#f2f2f2 100%,#f2f2f2 100%);
+}*/
+/*最上面的橙色细条*/
+.sapMShellBrandingBar {
+    position: absolute;
+    top: 0;
+    /*width: 100%;*/
+    width: 80rem;
+    margin-left: -40rem;
+    left: 50%;
+    height: 0.25rem;
+    z-index: 1;
+    background-color: #f0ab02;
+}
+/*控制第一行第一块*/
+.InfoStatusGeneralBlock{
+    background-color: #f2f2f2;
+    margin-right: 0.125rem;
+}
+.chartBlock{
+    background-color: #f2f2f2;
+    margin-left: 0.375rem;
+}
+
+.sapMITBHead {
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+    display: inline-block;
+    /* margin: 1rem 0.75rem 0 0.25rem; */
+    vertical-align: top;
+}
+
+
+/*控制图表的样式*/
+.lineChart{
+    width:32.8125rem;
+    height:18.75rem;
+
+}
+
+/*去掉默认的UI5控件的display：inline-block*/
+.SAPUI5Chart {
+    display: block;
+    vertical-align: top;
+}
+/*把字体改的小一些*/
+.sapMText.sapMObjLTitle {
+    font-size: 0.875rem;
+}
+.sapMObjLNumber {
+    font-size: 0.875rem;
+}
+#__component0---OverView--containerUSA{
+    padding-left:8rem;
+    /*height: 400px;
+    min-width: 600px;
+    max-width: 640px;*/
+    height: 25rem;
+    min-width: 37.5rem;
+    max-width: 40rem;
+    margin: 0 auto;
+
+}
+
+.sectionOne{
+    /*margin-top: 0.2rem;*/
+    margin-left:2rem;
+    margin-right:2rem;
+}
+.sectionTable{
+    padding: 1rem;
+    background-color: #f2f2f2;
+    margin-top: 0.5rem;
+    margin-left:2rem;
+    margin-right:2rem;
+    margin-bottom:4rem; /*先暂时设一下*/
+}
+
+.sapMLIB.sapMObjLItem {
+    padding: 0.3rem;
+}
+
+/*第一个列表的标题*/
+.sapMListHdr {
+    font-size: 1.125rem;
+    font-weight: bold;
+    height: 100%;
+    color: #333333;
+     padding: 0 0;
+}
+/*控制section1的宽度，对应view的86行*/
+#__component0---OverView--containerLayout{
+    width: 95%;
+}
+/*SectionOneList*/
+.SectionOneList #__list0-listUl .sapMLIB {
+     font-family: Arial,Helvetica,sans-serif;
+     color: #333333;
+     border-bottom: 0.0625rem solid #eeeeee;
+     background-color: #f8f8f8;
+     padding: 0.2rem 1rem 0.2rem 1rem;
+}
+.sapUiBlockCellContent {
+    width: 100%;
+    padding: 1rem 0 0 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.sapMList {
+    margin: 0;
+    padding: 0 1rem 0 1rem;
+}
+

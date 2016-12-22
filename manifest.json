@@ -1,0 +1,127 @@
+{
+	"_version": "1.1.0",
+	"sap.app": {
+		"_version": "1.1.0",
+		"id": "visualization",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"ach": "ach",
+		"resources": "resources.json",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.30.3"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"_version": "1.1.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_bluecrystal",
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"_version": "1.1.0",
+		"rootView": "visualization.view.App",
+		"dependencies": {
+			"minUI5Version": "1.30",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "visualization.i18n.i18n"
+				}
+			},
+			"invoice": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri":"model/Invoices.json"
+			},
+			"businessDataModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri":"model/businessDataGeneral.json"
+			},
+			"": {
+				"dataSource": "mainService"
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "visualization.view",
+				"controlId": "app",
+				"controlAggregation": "pages"
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "login",
+					"target": "login"
+				},
+				{
+					"pattern": "overView",
+					"name": "overView",
+					"target": "overView"
+				},
+				{
+					"pattern": "personalView/{BPIDPath}",
+					"name": "personalView",
+					"target": "personalView"
+				}
+			],
+			"targets": {
+				"login": {
+					"viewName": "Login",
+					"viewId":"LoginView"
+				},
+				"overView": {
+					"viewName": "OverView",
+					"viewId":"OverView"
+				},
+				"personalView": {
+					"viewName": "PersonalView",
+					"viewId":"PersonalView"
+				}
+			}
+		}
+	}
+}

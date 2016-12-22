@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>visualization</title>
+
+	<!-- Bootstrapping UI5 -->
+	<script id="sap-ui-bootstrap"
+			src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m, sap.ui.layout,sap.ui.core,sap.suite.ui.commons"
+			data-sap-ui-theme="sap_bluecrystal"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-resourceroots='{"visualization": "."}'
+			data-sap-ui-frameOptions="trusted">
+	</script>
+
+	<script>
+        sap.ui.getCore().attachInit(function() {
+            sap.ui.require([
+                "visualization/localService/mockserver",
+                "sap/m/Shell",
+                "sap/ui/core/ComponentContainer"
+            ], function (mockserver, Shell, ComponentContainer) {
+                mockserver.init();
+                new Shell({
+                    app: new sap.ui.core.ComponentContainer({
+                        name : "visualization"
+                    })
+					/*,appWidthLimited: false*/
+                }).placeAt("content");
+            });
+        });
+	</script>
+</head>
+
+<!-- UI Content -->
+<body class="sapUiBody" id="content">
+</body>
+<link href="css/login.css" rel="stylesheet" />
+<link href="css/OverView.css" rel="stylesheet" />
+
+<script type="text/javascript" src="js/highmap/jquery-1.8.3.min.js"></script>
+
+<!--highchar 注：先放highchart,再放highmap的相关js-->
+<script type="text/javascript" src="js/highchart/highcharts.js"></script>
+<script type="text/javascript" src="js/highchart/exporting.js"></script>
+<!--highmap-->
+<script src="js/highmap/map.js"></script>
+<script type="text/javascript" src="js/highmap/data.js"></script>
+<script type="text/javascript" src="js/highmap/drilldown.js"></script>
+<script src="js/highmap/us-all.js"></script>
+<script src="js/highmap/north-america.js"></script>
+
+<link href="css/highmaps/font-awesome.css" rel="stylesheet">
+<link href="css/highmaps/GeneralViewStyle.css" rel="stylesheet">
+
+</html>

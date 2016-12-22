@@ -1,0 +1,94 @@
+<core:View
+	controllerName="visualization.controller.App"
+    xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m">
+	<Page
+			title="OverViewPage"
+			titleLevel="Auto"
+			navButtonPress="onNavigation"
+			showHeader ="false"
+			showFooter="true"
+			enableScrolling="false"
+			showNavButton="false"
+			showSubHeader="false">
+	<content>
+			<Panel width="100%" id="navigation"></Panel>
+			<Panel width="100%" id="menu">
+				<headerToolbar >
+					<Toolbar id="menuL">
+						<Image
+						src="images/login/SAP.png"
+						height="48px" width="96px"/>
+					</Toolbar>
+				</headerToolbar>
+			</Panel>
+			<Panel width="100%" id="banner">
+				  <VBox id="login_w">
+					<f:Form id="FormChange354"
+						minWidth="1024"
+						maxContainerCols="2"
+						editable="true">
+						<f:title>
+							<core:Title text="Welcome to Log on" />
+						</f:title>
+						<f:layout>
+							<f:ResponsiveGridLayout
+								labelSpanL="3"
+								labelSpanM="3"
+								emptySpanL="4"
+								emptySpanM="4"
+								columnsL="1"
+								columnsM="1" />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement label="ID">
+										<f:fields>
+											<Input value="{}" id="id"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Password">
+										<f:fields>
+											<Input
+												id="passwordInput"
+												type="Password" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Button text="log in" press="onPresslogin" />
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				  </VBox>
+			</Panel>
+			<l:VerticalLayout id="LoginNav" width="100%" >
+				<l:content class="LoginNavContent_left">
+					<List
+						headerText="Kindly Remind " >
+						<DisplayListItem
+							label="Support for multiple roles to log in" />
+						<DisplayListItem
+							label="Unauthorized users are not allowed to login" />
+					</List>
+				</l:content>
+			</l:VerticalLayout>
+	</content>
+	<footer>
+			<Bar design="Footer">
+				<customData>
+					<core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true" id="__data5"/>
+					<core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true"/></customData>
+				<contentMiddle>
+					<Text text="Copyright SAP ; email: SAP@sap.com" />
+				</contentMiddle>
+			</Bar>
+	</footer>
+	</Page>
+</core:View>

@@ -1,0 +1,212 @@
+<mvc:View
+	controllerName="visualization.controller.OverView"
+	xmlns="sap.m"
+	xmlns:t="sap.ui.table"
+	xmlns:tnt="sap.tnt"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:m="sap.suite.ui.commons"
+	xmlns:viz="sap.viz.ui5.controls"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page
+			title="OverViewPage"
+			titleLevel="Auto"
+			navButtonPress="onNavigation"
+			showHeader ="false"
+			showFooter="false"
+			enableScrolling="true"
+			showNavButton="true"
+			showSubHeader="true">
+		<subHeader>
+			<tnt:ToolHeader class="overviewHeader">
+				<Toolbar>
+					<Image
+							src="images/login/SAP_Logo.png"
+							height="48px" width="96px"/>
+				</Toolbar>
+				<ToolbarSpacer width="20px" />
+				<Button text="File" type="Transparent">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Low" />
+					</layoutData>
+				</Button>
+				<Button text="Edit" type="Transparent">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Low" />
+					</layoutData>
+				</Button>
+				<Button text="View" type="Transparent">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Low" />
+					</layoutData>
+				</Button>
+				<Button text="Navigate" type="Transparent">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Low" />
+					</layoutData>
+				</Button>
+				<Button text="Code" type="Transparent">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Low" />
+					</layoutData>
+				</Button>
+				<Button text="Refactor" type="Transparent">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Low" />
+					</layoutData>
+				</Button>
+				<Button text="Run" type="Transparent">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Low" />
+					</layoutData>
+				</Button>
+				<Button text="Tools" type="Transparent">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Low" />
+					</layoutData>
+				</Button>
+				<tnt:ToolHeaderUtilitySeparator />
+				<ToolbarSpacer>
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px" />
+					</layoutData>
+				</ToolbarSpacer>
+				<Button text="Alan Smith" type="Transparent" press="handleUserNamePress">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" />
+					</layoutData>
+				</Button>
+			</tnt:ToolHeader>
+		</subHeader>
+
+		<content>
+
+			<!--section1-->
+			<l:VerticalLayout id="containerLayout" width="95%" class="sectionOne">
+				<l:BlockLayout id="BlockLayout">
+					<l:BlockLayoutRow>
+						<l:BlockLayoutCell
+								width="1"
+								class="InfoStatusGeneralBlock" >
+								<List
+										headerText="{i18n>headerText}"
+										class="SectionOneList"
+										width="auto"
+										items="{invoice>/Invoices}">
+									<items>
+										<ObjectListItem
+												title="{invoice>Quantity} x {invoice>ProductName}"
+												number="{
+													parts: [{path: 'invoice>ExtendedPrice'}, {path: 'view>/currency'}],
+													type: 'sap.ui.model.type.Currency',
+													formatOptions: {
+														showMeasure: false
+													}
+												}"
+												numberUnit="{view>/currency}"/>
+									</items>
+								</List>
+						</l:BlockLayoutCell>
+						<l:BlockLayoutCell
+								width="3"
+								class="chartBlock" >
+								<l:VerticalLayout id="containerUSA">
+								</l:VerticalLayout>
+							    <Button text="Get selected points"  id="getselectedpoints"/>
+						</l:BlockLayoutCell>
+					</l:BlockLayoutRow>
+				</l:BlockLayout>
+			</l:VerticalLayout>
+
+			<!--section2-->
+			<t:Table
+					rows="{/results}"
+					title="Risk OverView"
+					selectionMode="None"
+					visibleRowCount="8"
+			        class="sectionTable"
+					id="table">
+				<t:columns>
+					<t:Column width="3rem">
+						<Label text="Quo.No" />
+						<!--Use template control that is cloned as many times as needed to display the data-->
+						<t:template>
+							<Text text="{Quo.No}"/>
+						</t:template>
+					</t:Column>
+					<t:Column width="3rem">
+						<Label text="BPID" />
+						<t:template>
+							<Link text="{BPID}"  type="Navigation" press="onPressBPID"/>
+						</t:template>
+					</t:Column>
+					<t:Column width="6rem">
+						<Label text="Product" />
+						<t:template>
+							<Text text="{ProductName}"/>
+						</t:template>
+					</t:Column>
+					<t:Column width="4rem">
+						<Label text="Branch" />
+						<t:template>
+							<Text text="{Branch}"/>
+						</t:template>
+					</t:Column>
+					<t:Column width="4rem" hAlign="Center">
+						<Label text="Apply Date" />
+						<t:template>
+							<Text text="{ApplyDateStr}"/>
+						</t:template>
+					</t:Column>
+
+					<t:Column width="4rem" id="multiheader">
+						<t:multiLabels>
+							<Label text="uw decision" textAlign="Center" width="100%" />
+							<Label text="risk class" textAlign="Center" width="100%"/>
+						</t:multiLabels>
+						<t:template>
+							<Text text="{riskClass}"/>
+						</t:template>
+					</t:Column>
+					<t:Column width="4rem">
+						<t:multiLabels>
+							<Label text="uw decision" />
+							<Label text="uw rates" textAlign="Center" width="100%"/>
+						</t:multiLabels>
+						<t:template>
+							<Text text="{uwRates}"/>
+						</t:template>
+					</t:Column>
+					<t:Column width="4rem">
+						<t:multiLabels>
+							<Label text="uw decision"   />
+							<Label text="special risk" textAlign="Center" width="100%"/>
+						</t:multiLabels>
+						<t:template>
+							<Text text="{specialRisk}"/>
+						</t:template>
+					</t:Column>
+				</t:columns>
+			</t:Table>
+
+		</content>
+
+		<footer>
+			<Bar design="Footer">
+				<customData>
+					<core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true" id="__data5"/>
+					<core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true"/></customData>
+				<contentLeft>
+					<Button text="Ambulance" width="100px"/>
+				</contentLeft>
+				<contentMiddle>
+					<Button text="Family" width="100px"/>
+				</contentMiddle>
+				<contentRight>
+					<Button text="Doctor" width="100px"/>
+				</contentRight></Bar>
+		</footer>
+	</Page>
+
+</mvc:View>

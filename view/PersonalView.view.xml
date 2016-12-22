@@ -1,0 +1,125 @@
+<core:View
+        controllerName="visualization.controller.PersonalView"
+        xmlns="sap.m"
+        xmlns:t="sap.ui.table"
+        xmlns:tnt="sap.tnt"
+        xmlns:l="sap.ui.layout"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:m="sap.suite.ui.commons"
+        xmlns:viz="sap.viz.ui5.controls"
+        xmlns:core="sap.ui.core"
+        xmlns:mvc="sap.ui.core.mvc">
+    <Page
+            title="PersonalView"
+            titleLevel="Auto"
+            showHeader ="false"
+            showFooter="false"
+            enableScrolling="true"
+            showSubHeader="true"
+            showNavButton="true"
+            navButtonPress="onNavBack">
+    <subHeader>
+        <tnt:ToolHeader class="overviewHeader">
+            <Toolbar>
+                <Image
+                        src="images/login/SAP_Logo.png"
+                        height="48px" width="96px"/>
+            </Toolbar>
+            <ToolbarSpacer width="20px" />
+            <Button text="File" type="Transparent">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="Low" />
+                </layoutData>
+            </Button>
+            <Button text="Edit" type="Transparent">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="Low" />
+                </layoutData>
+            </Button>
+            <Button text="View" type="Transparent">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="Low" />
+                </layoutData>
+            </Button>
+            <Button text="Navigate" type="Transparent">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="Low" />
+                </layoutData>
+            </Button>
+            <Button text="Code" type="Transparent">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="Low" />
+                </layoutData>
+            </Button>
+            <Button text="Refactor" type="Transparent">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="Low" />
+                </layoutData>
+            </Button>
+            <Button text="Run" type="Transparent">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="Low" />
+                </layoutData>
+            </Button>
+            <Button text="Tools" type="Transparent">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="Low" />
+                </layoutData>
+            </Button>
+            <tnt:ToolHeaderUtilitySeparator />
+            <ToolbarSpacer>
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px" />
+                </layoutData>
+            </ToolbarSpacer>
+            <Button text="Alan Smith" type="Transparent" press="handleUserNamePress">
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="NeverOverflow" />
+                </layoutData>
+            </Button>
+        </tnt:ToolHeader>
+    </subHeader>
+
+    <content>
+        <List
+                id="invoiceList"
+                class="sapUiResponsiveMargin"
+                width="auto"
+                items="{
+			path : 'invoice>/Invoices',
+			sorter : {
+				path : 'ShipperName',
+				group : true
+			}
+		}">
+            <headerToolbar>
+                <Toolbar>
+                    <Title text="{i18n>invoiceListTitle}"/>
+                    <ToolbarSpacer/>
+                    <SearchField width="50%" search="onFilterInvoices" selectOnFocus="false"/>
+                </Toolbar>
+            </headerToolbar>
+            <items>
+                <ObjectListItem
+                        title="{PersonalViewModel>/BPID}"
+                        numberState="{=	${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success' }"
+                        type="Navigation"
+                        press="onPress">
+                    <!--In the invoice list view we add a press event to the list item
+                    and set the item type to Navigation so that the item can actually be clicked.-->
+                    <firstStatus>
+                        <ObjectStatus text="{
+						path: 'invoice>Status',
+						formatter: '.formatter.statusText'
+					}"/>
+                    </firstStatus>
+                </ObjectListItem>
+            </items>
+        </List>
+
+
+
+    </content>
+
+    </Page>
+</core:View>
